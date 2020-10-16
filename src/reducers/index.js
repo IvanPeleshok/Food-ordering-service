@@ -1,9 +1,9 @@
 const initialState = {
   menu: [],
-  items: [],
+  items: JSON.parse(localStorage.getItem("items")) || [],
   loading: true,
   error: false,
-  finalCost: 0,
+  finalCost: +localStorage.getItem("cost") || 0,
   idToCard: null,
 };
 
@@ -39,7 +39,17 @@ const reducer = (state = initialState, action) => {
           count: item.count + 1,
         };
         const costAdd = state.finalCost + item.price;
-
+        // 
+        localStorage.setItem('cost', costAdd);
+        localStorage.setItem(
+          "items",
+          JSON.stringify([
+            ...state.items.slice(0, indexAdd),
+            newItem,
+            ...state.items.slice(indexAdd + 1),
+          ])
+          // 
+        );
         return {
           ...state,
           finalCost: costAdd,
@@ -60,6 +70,17 @@ const reducer = (state = initialState, action) => {
         count: 1,
       };
       const costAdd = state.finalCost + item.price;
+      // 
+      localStorage.setItem('cost', costAdd);
+      localStorage.setItem(
+        "items",
+        JSON.stringify([
+          ...state.items.slice(0, indexAdd),
+          newItem,
+          ...state.items.slice(indexAdd + 1),
+        ])
+        // 
+      );
       return {
         ...state,
         items: [...state.items, newItem],
@@ -71,6 +92,16 @@ const reducer = (state = initialState, action) => {
       const costRemove =
         state.finalCost -
         state.items[itemIndex].price * state.items[itemIndex].count;
+      //
+      localStorage.setItem('cost', costRemove );
+      localStorage.setItem(
+        "items",
+        JSON.stringify([
+          ...state.items.slice(0, itemIndex),
+          ...state.items.slice(itemIndex + 1),
+        ])
+        //
+      );
       return {
         ...state,
         items: [
@@ -79,16 +110,16 @@ const reducer = (state = initialState, action) => {
         ],
         finalCost: costRemove,
       };
-      case "RESET_CART":
-        return {
-          ...state,
-          items: [],
-          finalCost : 0,
-        }
+    case "RESET_CART":
+      localStorage.clear();
+      return {
+        ...state,
+        items: [],
+        finalCost: 0,
+      };
     default:
       return state;
   }
 };
 
 export default reducer;
-

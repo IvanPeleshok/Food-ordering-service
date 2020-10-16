@@ -1,9 +1,12 @@
-.item_page{
+.item_page {
     display: flex;
     width: 100%;
     height: 100vh;
 }
-.item_block{
+
+
+
+.item_block {
     margin: auto;
     width: 700px;
     height: 450px;
@@ -11,10 +14,13 @@
 }
 
 
-.menu__item{
+.menu__item {
     position: relative;
+    background: brown;
+
 }
-.menu__category_Img{
+
+.menu__category_Img {
     position: absolute;
     content: '';
     bottom: 20px;
@@ -25,14 +31,25 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.menu__img {
+    cursor: pointer;
+}
+
+.not_href{
+    cursor: default;
+}
+
 .pizza {
     background-image: url('http://www-static.dreambox.com/wp-content/uploads/2015/02/Prize-Icon-Pizza.png');
     width: 70px;
     height: 70px;
 }
+
 .salads {
     background-image: url('https://images.vexels.com/media/users/3/141142/isolated/preview/d5ce613797b1fd08bdf3e038bfa1d0b2-colorful-salad-cartoon-by-vexels.png')
 }
-.meat{
+
+.meat {
     background-image: url('https://cdn2.iconfinder.com/data/icons/food-drinks-v3/512/Steak-512.png');
 }

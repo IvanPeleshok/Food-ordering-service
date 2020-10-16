@@ -9,7 +9,7 @@ const CartTable = ({ items, deleteFromCart, RestoService, resetCart }) => {
     return (
       <h1
         style={{
-          color: "ffff",
+          color: "#ffff",
           fontSize: "36px",
           fontWeight: "300",
           textAlign: "center",

@@ -1,9 +1,9 @@
 import React from 'react';
 import CartTable from '../cart-table';
 
-const CartPage = ({render}) => {
+const CartPage = () => {
     return (
-        <div className="cart" >  
+        <div className="cart">   
             <CartTable/>
         </div>
     )
